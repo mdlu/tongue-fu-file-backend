@@ -39,7 +39,7 @@ def scoring():
 @cross_origin()
 def home():
     if request.method == 'GET':
-        return 
+        return
     else:
         if request.method == 'POST':
             file = request.files['']
