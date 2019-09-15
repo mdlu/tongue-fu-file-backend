@@ -11,7 +11,7 @@ ALLOWED_EXTENSIONS = {'webm'}
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/score', methods=['GET', 'POST'])
 @cross_origin()
 def home():
     if request.method == 'GET':
@@ -33,6 +33,20 @@ def home():
             compare = twister_score.compare(orig, stripped_ts)
             # a = int(twister_score.compare(orig, sample) * twister_score.score(orig) * 10) # multiplies accuracy by the difficulty of the tongue twister, and scales by 10
             return json.dumps({"ts": ts, "stripped_ts": stripped_ts, "compare": compare, "orig_score": orig_score})
+            
+
+# @app.route('/score', methods=['GET', 'POST'])
+# @cross_origin()
+# def home():
+#     if request.method == 'GET':
+#         return 
+#     else:
+#         if request.method == 'POST':
+#             file = request.files['']
+#             filename = secure_filename(file.filename)
+#             path = os.path.join(app.config['UPLOAD_FOLDER'], filename) # path to audio file
+#             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename)) # saves locally
+#             return json.dumps(a)
 
 
 # @app.route('/score', methods=['GET', 'POST'])
