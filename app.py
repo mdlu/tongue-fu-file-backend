@@ -46,6 +46,8 @@ def home():
             filename = secure_filename(file.filename)
             path = os.path.join(app.config['UPLOAD_FOLDER'], filename) # path to audio file
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename)) # saves locally
+
+            a = get_transcript(path)
             return json.dumps(a)
 
 
