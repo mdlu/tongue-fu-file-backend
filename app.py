@@ -25,7 +25,7 @@ def home():
 
             ts = get_transcript(path) # retrieves the file again using the path
             colon = ts.index(':')
-            stripped_ts = ts[colon+4:]
+            stripped_ts = ts[colon+4:].replace('\n', '').strip()
 
             orig = request.form["orig"]
             orig_score = twister_score.score(orig)
